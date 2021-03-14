@@ -5,11 +5,11 @@ class TodolistsController < ApplicationController
   end
 
   def create
-    #1 データを新規登録するためのインスタンス作成
+    # 1 データを新規登録するためのインスタンス作成
     list = List.new(list_params)
-    #2 データをDBに保存するためのsaveメソッド実行
+    # 2 データをDBに保存するためのsaveメソッド実行
     list.save
-    #3 詳細画面へリダイレクト
+    # 3 詳細画面へリダイレクト
     redirect_to todolist_path(list.id)
   end
 
@@ -32,15 +32,15 @@ class TodolistsController < ApplicationController
   end
 
   def destroy
-    list = List.find(params[:id])  # データ（レコード）を1件取得
-    list.destroy  # データ（レコード）を削除
-    redirect_to todolists_path  # 投稿一覧画面へリダイレクト
+    list = List.find(params[:id]) # データ（レコード）を1件取得
+    list.destroy # データ（レコード）を削除
+    redirect_to todolists_path # 投稿一覧画面へリダイレクト
   end
 
   private
-  #ストロングパラメータ
+
+  # ストロングパラメータ
   def list_params
     params.require(:list).permit(:title, :body, :image)
   end
-
 end
